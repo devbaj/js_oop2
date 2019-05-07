@@ -39,9 +39,7 @@ function Ninja(name, health = 100) {
 
     this.kick = function(ninja) {
         if (ninja instanceof Ninja) {
-            console.log(this.strength);
             var kickPower = this.readStrength() * 5;
-            console.log(kickPower);
             ninja.health -= kickPower;
             console.log(ninja.name, "was kicked by", this.name, "and lost", kickPower, "health!");
         }
