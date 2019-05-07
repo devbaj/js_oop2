@@ -12,16 +12,21 @@ class Card {
 
 class Deck {
     constructor(){
-        this.cards = [];
+        this.cards = createDeck();
+        }
+    
+    createDeck(){
+        var cards = []
         var suits = ["Hearts", "Diamonds", "Spades", "Clubs"];
         var valueStrings = ["Ace", "Two", "Three", "Four", "Five", "Six", "Seven", "Eight", "Nine", "Ten", "Jack", "Queen", "King"];
         var values = [1,2,3,4,5,6,7,8,9,10,11,12,13];
         
         for (let i in suits) {
             for (let j in values) {
-                this.cards.push(new Card(suits[i], valueStrings[j], values[j]));
+                cards.push(new Card(suits[i], valueStrings[j], values[j]));
             }
         }
+        return cards;
     }
 
     shuffle(){
@@ -37,8 +42,7 @@ class Deck {
     }
 
     reset(){
-        var deck = new Deck;
-        this.cards = deck.cards;
+        this.cards = createDeck();
         return this;
     }
 
@@ -71,8 +75,6 @@ class Player {
 }
 
 var deck = new Deck;
-console.log(deck);
-console.log(deck.cards.length);
 deck.shuffle();
 var chika = new Player("Chika");
 chika.take(deck);
@@ -80,6 +82,4 @@ chika.take(deck);
 chika.take(deck);
 chika.take(deck);
 chika.take(deck);
-console.log(chika.hand)
 chika.discard("Diamonds", "Ten");
-console.log(chika.hand);
